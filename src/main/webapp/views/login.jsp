@@ -59,7 +59,8 @@ img.avatar {
 
 /* Add padding to containers */
 .container {
-  padding: 16px;
+  padding: 30px;
+  margin: 30px;
 }
 
 /* The "Forgot password" text */
@@ -78,21 +79,30 @@ span.psw {
     width: 100%;
   }
 }
+.signup_button{
+	background-color: #0f90f2;
+}
+.body{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 20px;
+	flex-direction: column;
+}
 </style>
 
 
-<title>Insert title here</title>
+<title>Login </title>
 </head>
-<body>
-	<form action="/ltweb4/login" method="post">
-	<div class="imgcontainer">
-    <img src="https://www.w3schools.com/howto/img_avatar2.png" alt="Avatar" class="avatar">
-  	</div>
-
-  		<c:if test="${alert !=null}">
+<body class = "body">
+	<c:if test="${alert !=null}">
 			<h3 class="alert alertdanger">${alert}</h3>
 		</c:if>
+	
+	<form action="/ltweb4/login" method="post">
+	
 
+  		
   <div class="container">
     <label for="uname"><b>Username</b></label>
     <input type="text" placeholder="Enter Username" name="uname" required>
@@ -101,6 +111,7 @@ span.psw {
     <input type="password" placeholder="Enter Password" name="psw" required>
 
     <button type="submit">Login</button>
+    <button type="submit" class = "signup_button">Sign up</button>
     <label>
       <input type="checkbox" checked="checked" name="remember"> Remember me
     </label>

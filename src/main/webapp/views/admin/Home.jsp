@@ -7,10 +7,66 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Admin</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #007bff;
+    color: white;
+    padding: 15px 30px;
+}
+
+.header h1 {
+    margin: 0;
+}
+
+.logout-btn {
+    background-color: #dc3545;
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.logout-btn:hover {
+    background-color: #c82333;
+}
+
+.admin-dashboard {
+    background-color: white;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+</style>
 </head>
 <body>
-	<h2>Admin</h2>
-	<h3>Xin  ${username }</h3>
+	<div class="container">
+        <div class="header">
+            <h1>Welcome, ${username } !</h1>
+            <a href="{% url 'logout' %}" class="logout-btn">Log Out</a>
+        </div>
+        <div class="admin-dashboard">
+            <h2>Admin Dashboard</h2>
+            <!-- Content for admin dashboard -->
+        </div>
+    </div>
 </body>
 </html>
