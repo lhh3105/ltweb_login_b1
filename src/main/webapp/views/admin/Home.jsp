@@ -10,7 +10,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h2>Trang chủ Admin</h2>
-	<h3>Xin chào ${username }</h3>
+	<h2>Admin</h2>
+	<h3>Xin  ${username }</h3>
 </body>
 </html>
