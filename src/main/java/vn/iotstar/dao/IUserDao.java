@@ -10,9 +10,10 @@ public interface IUserDao {
 	
 	UserModel findById(int id);
 	
-	void Insert(UserModel user);
+	boolean Insert(String email, String username, String password);
 	
 	UserModel findByUserName(String username);
 	
+	UserModel findByEmail(String email);
 
 }

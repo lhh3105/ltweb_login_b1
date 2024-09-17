@@ -23,4 +23,17 @@ public class UserService implements IUserService {
 		return userDao.findByUserName(username);
 	}
 
+	@Override
+	public UserModel FindByEmail(String email) {
+		
+		
+		return userDao.findByEmail(email);
+	}
+
+	@Override
+	public boolean Insert(String email, String username, String password) {
+		// TODO Auto-generated method stub
+		return userDao.Insert(email, username, password);
+	}
+
 }

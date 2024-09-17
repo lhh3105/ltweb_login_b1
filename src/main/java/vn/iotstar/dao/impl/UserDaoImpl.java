@@ -58,9 +58,28 @@ public class UserDaoImpl extends DBConnectMySQL implements IUserDao{
 	}
 
 	@Override
-	public void Insert(UserModel user) {
+	public boolean Insert(String email, String username, String password) {
 		// TODO Auto-generated method stub
+		boolean isthem = false;
+		String sql = "INSERT INTO users(email, username, password,roleid) VALUES (?,?,?,1)";
+		try {
+			conn = new DBConnectMySQL().getDatabaseConnection();
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, email);
+			ps.setString(2, username);
+			ps.setString(3, password);
+			
+			int rowsInserted = ps.executeUpdate();
+			if (rowsInserted>0) {
+				isthem = true;
+			} 
+
+		} catch (Exception e) {e.printStackTrace(); }
 		
+		
+		
+		
+		return isthem;
 	}
 	
 	
@@ -90,12 +109,40 @@ public class UserDaoImpl extends DBConnectMySQL implements IUserDao{
 
 	}
 	
+	@Override
+	public UserModel findByEmail(String email) {
+		String sql = "SELECT * FROM users WHERE email = ?";
+		try {
+			conn = new DBConnectMySQL().getDatabaseConnection();
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, email);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				UserModel user = new UserModel();
+				user.setId(rs.getInt("id"));
+				user.setEmail(rs.getString("email"));
+				user.setUsername(rs.getString("username"));
+				user.setFullname(rs.getString("fullname"));
+				user.setPassword(rs.getString("password"));
+				user.setAvatar(rs.getString("avatar"));
+				user.setRoleid(Integer.parseInt(rs.getString("roleid")));
+				user.setPhone(rs.getString("phone"));
+				user.setCreateDate(rs.getDate("createDate"));
+				return user; 
+				}
+		} catch (Exception e) {e.printStackTrace(); }
+		
+		
+		return null;
+		
+	}
 	
 	public static void main(String[] args) {
-		UserDaoImpl userDao = new UserDaoImpl();
-		List<UserModel> list  = userDao.findAll();
-		System.out.println(userDao.findByUserName("hoang"));
+		UserDaoImpl x = new UserDaoImpl();
+		System.out.println(x.findByEmail("tan@gmail.com"));
 	}
+
+	
 
 	
 

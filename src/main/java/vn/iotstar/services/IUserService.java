@@ -7,5 +7,8 @@ public interface IUserService {
 	
 	UserModel FindByUserName(String username);
 	
+	UserModel FindByEmail(String email);
+	
+	boolean Insert(String email, String username, String password);
 	
 }
