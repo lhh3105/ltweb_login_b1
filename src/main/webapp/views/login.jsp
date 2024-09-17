@@ -89,21 +89,27 @@ span.psw {
 	margin: 20px;
 	flex-direction: column;
 }
+.alert{
+	color: red;
+}
+
 </style>
 
 
 <title>Login </title>
 </head>
 <body class = "body">
-	<c:if test="${alert !=null}">
-			<h3 class="alert alertdanger">${alert}</h3>
-		</c:if>
 	
+	<h1>Login</h1>
 	<form action="/ltweb4/login" method="post">
 	
-
+	
   		
   <div class="container">
+  
+  	<c:if test="${alert !=null}">
+			<h3 class="alert alertdanger">${alert}</h3>
+		</c:if>
     <label for="uname"><b>Username</b></label>
     <input type="text" placeholder="Enter Username" name="uname" required>
 

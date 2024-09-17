@@ -60,7 +60,7 @@ body {
 	<div class="container">
         <div class="header">
             <h1>Welcome, ${username } !</h1>
-            <a href="{% url 'logout' %}" class="logout-btn">Log Out</a>
+            <a href="/ltweb4/logout" class="logout-btn">Log Out</a>
         </div>
         <div class="manager-dashboard">
             <h2>Manager Dashboard</h2>
