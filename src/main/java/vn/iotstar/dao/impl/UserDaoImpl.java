@@ -137,11 +137,37 @@ public class UserDaoImpl extends DBConnectMySQL implements IUserDao{
 		
 	}
 	
-	public static void main(String[] args) {
-		UserDaoImpl x = new UserDaoImpl();
-		System.out.println(x.findByEmail("tan@gmail.com"));
+	@Override
+	public boolean Update_pass(String username, String password) {
+		boolean isupdate = false;
+		String sql = "UPDATE users SET password =  ? WHERE username =  ?";
+		try {
+			conn = new DBConnectMySQL().getDatabaseConnection();
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, password);
+			ps.setString(2, username);
+			
+			int rowsUpdated = ps.executeUpdate();
+
+	            // Kiểm tra kết quả
+	        if (rowsUpdated > 0) {
+	                isupdate = true;
+	            }
+	            
+		} catch (Exception e) {e.printStackTrace(); }
+		
+		
+		return isupdate;
+		
 	}
 
+	
+	public static void main(String[] args) {
+		UserDaoImpl x = new UserDaoImpl();
+		System.out.println(x.Update_pass("huy","111"));
+	}
+
+	
 	
 
 	

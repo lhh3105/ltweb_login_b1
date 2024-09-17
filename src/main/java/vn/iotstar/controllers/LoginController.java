@@ -41,7 +41,7 @@ public class LoginController extends HttpServlet{
 		
 		if (username.isEmpty() || password.isEmpty() ) {
 			alertMsg = "Username or password is empty";
-			req.setAttribute("alertMsg", alertMsg );
+			req.setAttribute("alert", alertMsg );
 			req.getRequestDispatcher("/views/login.jsp").forward(req, resp);
 			return;
 		}
@@ -60,6 +60,8 @@ public class LoginController extends HttpServlet{
 		} else {
 			alertMsg = "Tài khoản hoặc mật khẩu không đúng";
 			req.setAttribute("alert", alertMsg);
+			HttpSession session =  req.getSession(true);
+			session.setAttribute("username", username);
 			req.getRequestDispatcher("/views/login.jsp").forward(req, resp);
 
 		}

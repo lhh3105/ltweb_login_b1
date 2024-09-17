@@ -15,5 +15,7 @@ public interface IUserDao {
 	UserModel findByUserName(String username);
 	
 	UserModel findByEmail(String email);
+	
+	boolean Update_pass(String email,String password);
 
 }

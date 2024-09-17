@@ -36,4 +36,9 @@ public class UserService implements IUserService {
 		return userDao.Insert(email, username, password);
 	}
 
+	@Override
+	public boolean Update_pass(String username, String password) {
+		return userDao.Update_pass(username, password);
+	}
+
 }

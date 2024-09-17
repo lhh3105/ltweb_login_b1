@@ -11,4 +11,6 @@ public interface IUserService {
 	
 	boolean Insert(String email, String username, String password);
 	
+	boolean Update_pass(String username,String password);
+	
 }
